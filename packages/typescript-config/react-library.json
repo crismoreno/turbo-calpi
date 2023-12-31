@@ -3,9 +3,30 @@
   "display": "React Library",
   "extends": "./base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "lib": ["dom", "ES2015"],
+    "allowJs": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+
+    "target": "es6",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "dom", "ES2015"],
     "module": "ESNext",
-    "target": "es6"
-  }
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src", ".storybook"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "types": ["node", "jest", "@testing-library/jest-dom"]
 }

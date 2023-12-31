@@ -10,11 +10,28 @@ const config = {
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@storybook/addon-docs"),
+    // getAbsolutePath("@storybook/addon-actions"),
+    // getAbsolutePath("@storybook/addon-backgrounds"),
+    // getAbsolutePath("@storybook/addon-interactions"),
+    // getAbsolutePath("@storybook/addon-onboarding"),
+    // getAbsolutePath("@storybook/addon-measure"),
+    // getAbsolutePath("@storybook/addon-storysource"),
+    // getAbsolutePath("@storybook/addon-toolbars"),
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
+	// typescript: {
+  //   reactDocgen: 'react-docgen-typescript',
+  //   reactDocgenTypescriptOptions: {
+  //     tsconfigPath: '../tsconfig.json',
+  //     shouldExtractLiteralValuesFromEnum: true,
+  //     shouldRemoveUndefinedFromOptional: true,
+  //     savePropValueAsString: true,
+  //     skipChildrenPropWithoutDoc: false,
+  //   },
+  // },
 
   core: {},
 

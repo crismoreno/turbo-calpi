@@ -1,46 +1,37 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@repo/ui";
+import { action } from '@storybook/addon-actions';
+import { UserCircleIcon } from '@heroicons/react/20/solid';
 
-const meta: Meta<typeof Button> = {
-  component: Button,
-  argTypes: {
-    type: {
-      control: { type: "radio" },
-      options: ["button", "submit", "reset"],
-    },
-  },
+export default {
+  title: 'Components/Atom/Button',
+  component: 'Button',
 };
 
-export default meta;
+export const DefaultButtonStory = (): JSX.Element => (
+  <Button>default Button</Button>
+);
 
-type Story = StoryObj<typeof Button>;
+export const ButtonWithIcon = (): JSX.Element => (
+  <Button icon={<UserCircleIcon />}>Button with Icon</Button>
+);
 
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/react/api/csf
- * to learn how to use render functions.
- */
-export const Primary: Story = {
-  render: (props) => (
-    <Button
-      {...props}
-      onClick={(): void => {
-        // eslint-disable-next-line no-alert -- alert for demo
-        alert("Hello from Turborepo!");
-      }}
-    >
-      Hello
-    </Button>
-  ),
-  name: "Button",
-  args: {
-    children: "Hello",
-    type: "button",
-    style: {
-      color: "blue",
-      border: "1px solid gray",
-      padding: 10,
-      borderRadius: 10,
-    },
-  },
-};
+export const ButtonRounded = (): JSX.Element => (
+  <Button rounded>Button Rounded</Button>
+);
+
+export const SecondaryButton = (): JSX.Element => (
+  <Button buttonType="secondary">Button Rounded</Button>
+);
+
+export const ButtonWithOnClickEvent = (): JSX.Element => (
+  <Button onClick={action('Primary action button')}>Button with click</Button>
+);
+
+export const DisabledButton = (): JSX.Element => (
+  <Button disabled>Disabled button</Button>
+);
+
+export const UppercasedButton = (): JSX.Element => (
+  <Button isUppercase>Uppercased button</Button>
+);
+
