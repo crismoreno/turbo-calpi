@@ -17,6 +17,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/prettier": "workspace:*",
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",

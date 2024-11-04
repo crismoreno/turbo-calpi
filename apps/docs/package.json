@@ -19,6 +19,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+		"@repo/prettier": "workspace:*",
     "@storybook/addon-actions": "^7.5.3",
     "@storybook/addon-backgrounds": "^7.6.3",
     "@storybook/addon-docs": "^7.5.3",
