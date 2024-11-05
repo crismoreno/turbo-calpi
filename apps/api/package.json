@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --external:express --external:cors --format=esm",
+    "start": "node dist/index.js",
+    "type-check": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,6 +23,7 @@
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
+    "mongodb": "^6.10.0",
     "nodemailer": "^6.9.16",
     "nodemon": "^3.1.7",
     "passport": "^0.7.0",
@@ -25,13 +31,14 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
     "@repo/prettier": "workspace:*",
+    "@repo/types": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
     "esbuild": "^0.24.0",
     "tsx": "^4.19.2",
-    "types": "workspace:*",
     "typescript": "^4.9.5"
   }
 }

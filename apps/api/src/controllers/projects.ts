@@ -1,9 +1,8 @@
-import projectsModel from "../repository/projects";
+import projects from "../repository/projects";
 
 export default {
-  //GET all showable projects --> NO auth required
-  getAllShowableProjects: (_, res) => {
-    projectsModel.getAllShowableProjects((err, projects) => {
+  list: (req, res) => {
+    projects.list(req, (err, projects) => {
       if (err) {
         res.send(err);
       } else {

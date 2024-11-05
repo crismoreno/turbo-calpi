@@ -1,25 +1,17 @@
-import { Projects } from "../dto";
+import { getBooleanFromString, buildQueryParams } from "../helpers/index";
+import client from "../config/config";
 
 export default {
-  //GET all showable projects --> NO auth required
-  getAllShowableProjects: async (response) => {
-    try {
-      // TODO:Query projects
-      // db.getCollection("Projects")
-      //   .find(
-      //     {
-      //       where: { show: true },
-      //     },
-      //     {
-      //       include: ["id", "customer", "title"],
-      //     },
-      //   )
-      //   .sort({
-      //     order: [["orderby", "ASC"]],
-      //   });
-      response(null, projects);
-    } catch (err) {
-      response(err, null);
-    }
+  list: async (req, res) => {
+    const featured = getBooleanFromString(req.query.featured);
+    const visible = getBooleanFromString(req.query.visible);
+
+    const projects = await client
+      ?.db("Portfolio")
+      .collection("projects")
+      .find(buildQueryParams({ featured, visible }))
+      .toArray();
+    console.log(projects?.length);
+    res(projects);
   },
 };
