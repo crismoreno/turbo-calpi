@@ -1,4 +1,4 @@
-export const getBooleanFromString = (string) => {
+export const parseStringToBoolean = (string) => {
   if (typeof string === "string") {
     return string === "true";
   }

@@ -1,13 +1,13 @@
 import projects from "../repository/projects";
+import { parseStringToBoolean } from "../helpers/index";
 
 export default {
   list: (req, res) => {
-    projects.list(req, (err, projects) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(projects);
-      }
+    const featured = parseStringToBoolean(req.query.featured);
+    const visible = parseStringToBoolean(req.query.visible);
+
+    projects.list({ featured, visible }, (projects) => {
+      res.send(projects);
     });
   },
 };

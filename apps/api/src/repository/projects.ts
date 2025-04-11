@@ -1,17 +1,15 @@
-import { getBooleanFromString, buildQueryParams } from "../helpers/index";
-import client from "../config/config";
+import { buildQueryParams } from "../helpers/index";
+import { db } from "../models";
+
+const { Project } = db;
 
 export default {
-  list: async (req, res) => {
-    const featured = getBooleanFromString(req.query.featured);
-    const visible = getBooleanFromString(req.query.visible);
-
-    const projects = await client
-      ?.db("Portfolio")
-      .collection("projects")
-      .find(buildQueryParams({ featured, visible }))
-      .toArray();
-    console.log(projects?.length);
+  list: async ({ featured, visible }, res) => {
+    const projects = await Project.findAll({
+      where: { show: visible || undefined },
+      order: [["orderby", "ASC"]],
+      attributes: ["id", "customer", "title"],
+    });
     res(projects);
   },
 };
