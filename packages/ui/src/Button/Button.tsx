@@ -1,10 +1,10 @@
-import React from 'react';
-import { ReactNode } from 'react';
-import styled from 'styled-components';
-import { PrimaryButtonStyles, SecondaryButtonStyles } from './buttonStyles';
-import { fontsLib } from '../../styles';
+import React from "react";
+import { ReactNode } from "react";
+import styled from "styled-components";
+import { PrimaryButtonStyles, SecondaryButtonStyles } from "./buttonStyles";
+import { fontsLib } from "../../styles";
 
-type ButtonTypes = 'primary' | 'secondary';
+type ButtonTypes = "primary" | "secondary";
 
 export type ButtonProps = {
   children: ReactNode;
@@ -25,20 +25,20 @@ type StyledButtonProps = {
 
 const renderChildrenWithIcon = (
   children: ReactNode,
-  icon: ReactNode
+  icon: ReactNode,
 ): JSX.Element => (
-  <span className="inline-flex items-center text-orange-700">
+  <StyledChildrenWithIcon>
+    <span className="icon-container">{icon}</span>
     {children}
-    <span className="ml-2 w-5">{icon}</span>
-  </span>
+  </StyledChildrenWithIcon>
 );
 
 const getStyleBasedOnType = (customType: ButtonTypes | undefined) => {
-  if (customType === 'secondary') return SecondaryButtonStyles;
+  if (customType === "secondary") return SecondaryButtonStyles;
   return PrimaryButtonStyles;
 };
 
-export const Button = ({
+const Button = ({
   children,
   icon,
   rounded,
@@ -48,7 +48,7 @@ export const Button = ({
   isUppercase,
 }: ButtonProps): JSX.Element => (
   <StyledButton
-		className="bg-blue-600"
+    className="bg-blue-600"
     onClick={onClick}
     $rounded={rounded}
     $disabled={disabled}
@@ -59,6 +59,17 @@ export const Button = ({
     {icon ? renderChildrenWithIcon(children, icon) : children}
   </StyledButton>
 );
+
+const StyledChildrenWithIcon = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .icon-container {
+    display: flex;
+    margin-right: 8px;
+    width: 25px;
+  }
+`;
 
 const StyledButton = styled.button<StyledButtonProps>`
   font-family: ${fontsLib.sourceSansPro};
@@ -86,3 +97,5 @@ const StyledButton = styled.button<StyledButtonProps>`
 		text-transform: uppercase;
 		`}
 `;
+
+export default Button;

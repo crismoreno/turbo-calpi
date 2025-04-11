@@ -1,10 +1,10 @@
 import { Button } from "@repo/ui";
-import { action } from '@storybook/addon-actions';
-import { UserCircleIcon } from '@heroicons/react/20/solid';
+import { action } from "@storybook/addon-actions";
+import { UserCircleIcon } from "@heroicons/react/20/solid";
 
 export default {
-  title: 'Components/Atom/Button',
-  component: 'Button',
+  title: "Components/Atom/Button",
+  component: "Button",
 };
 
 export const DefaultButtonStory = (): JSX.Element => (
@@ -24,7 +24,7 @@ export const SecondaryButton = (): JSX.Element => (
 );
 
 export const ButtonWithOnClickEvent = (): JSX.Element => (
-  <Button onClick={action('Primary action button')}>Button with click</Button>
+  <Button onClick={action("Primary action button")}>Button with click</Button>
 );
 
 export const DisabledButton = (): JSX.Element => (
@@ -34,4 +34,3 @@ export const DisabledButton = (): JSX.Element => (
 export const UppercasedButton = (): JSX.Element => (
   <Button isUppercase>Uppercased button</Button>
 );
-

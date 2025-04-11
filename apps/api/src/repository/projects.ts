@@ -1,25 +1,15 @@
-import { Projects } from "../dto";
+import { buildQueryParams } from "../helpers/index";
+import { db } from "../models";
+
+const { Project } = db;
 
 export default {
-  //GET all showable projects --> NO auth required
-  getAllShowableProjects: async (response) => {
-    try {
-      // TODO:Query projects
-      // db.getCollection("Projects")
-      //   .find(
-      //     {
-      //       where: { show: true },
-      //     },
-      //     {
-      //       include: ["id", "customer", "title"],
-      //     },
-      //   )
-      //   .sort({
-      //     order: [["orderby", "ASC"]],
-      //   });
-      response(null, projects);
-    } catch (err) {
-      response(err, null);
-    }
+  list: async ({ featured, visible }, res) => {
+    const projects = await Project.findAll({
+      where: { show: visible || undefined },
+      order: [["orderby", "ASC"]],
+      attributes: ["id", "customer", "title"],
+    });
+    res(projects);
   },
 };

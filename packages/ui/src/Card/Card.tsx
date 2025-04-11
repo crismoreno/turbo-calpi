@@ -1,8 +1,8 @@
-import { type FC } from 'react';
-import { ReactNode } from 'react';
-import styled from 'styled-components';
-import '../../styles';
-import { colorsLib, fontsLib } from '../../styles';
+import { type FC } from "react";
+import { ReactNode } from "react";
+import styled from "styled-components";
+import "../../styles";
+import { colorsLib, fontsLib } from "../../styles";
 
 export type CardProps = {
   src: string;
@@ -18,14 +18,14 @@ type StyledCardProps = {
   $makeHoverEffect?: boolean;
 };
 
-export const Card: FC<CardProps> = ({
+const Card: FC<CardProps> = ({
   src,
   onClick,
   title,
   subtitle,
   makeHoverEffect,
 }: CardProps): JSX.Element => {
-  const isTitleString = typeof title === 'string';
+  const isTitleString = typeof title === "string";
   const mustTitleBeTruncated = subtitle && isTitleString && title.length >= 30;
 
   return (
@@ -41,7 +41,7 @@ export const Card: FC<CardProps> = ({
         </div>
         <div className="project-details flex flex-col justify-center p-3">
           <span className="title" aria-label="title">
-            {mustTitleBeTruncated ? title.substring(0, 30) + '\u2026' : title}
+            {mustTitleBeTruncated ? title.substring(0, 30) + "\u2026" : title}
           </span>
           <p className="subtitle">{subtitle}</p>
         </div>
@@ -101,3 +101,5 @@ const StyledCard = styled.div<StyledCardProps>`
   }
   ${({ $hasOnClick }) => $hasOnClick && `cursor: pointer`}
 `;
+
+export default Card;
