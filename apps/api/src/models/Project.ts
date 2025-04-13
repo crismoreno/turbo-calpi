@@ -1,72 +1,65 @@
 import { DataTypes } from "@sequelize/core";
 import sequelizePool from "../config";
 
-export default sequelizePool.define("Project", {
+export default sequelizePool.define("projects", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  orderby: {
+  priority: {
     type: DataTypes.INTEGER,
   },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // developed_at: {
-  //   type: DataTypes.STRING,
-  // },
-  customer: {
-    type: DataTypes.STRING,
+  originId: {
+    type: DataTypes.INTEGER,
   },
-  collaborators: {
-    type: DataTypes.STRING,
+  clientId: {
+    type: DataTypes.INTEGER,
   },
-  completion_date: {
+  completionDate: {
     type: DataTypes.STRING,
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  link_to_prod: {
+  prodUrl: {
     type: DataTypes.STRING,
   },
-  link_to_repo: {
+  repoUrl: {
     type: DataTypes.STRING,
   },
-  link_to_post: {
+  blogUrl: {
     type: DataTypes.STRING,
   },
-  link_to_download: {
+  downloadUrl: {
     type: DataTypes.STRING,
   },
-  video: {
+  videoUrl: {
     type: DataTypes.STRING,
   },
-  // tags: {
-  //   type: DataTypes.STRING,
-  // },
-  // coding_lang: {
-  //   type: DataTypes.STRING,
-  // },
-  is_featured: {
+  featured: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-  related_by: {
+  relatedBy: {
     type: DataTypes.STRING,
   },
-  related_by_id: {
+  relatedById: {
     type: DataTypes.INTEGER,
   },
-  show: {
+  visible: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-  // imgs: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false,
-  // },
+  createdAt: {
+    type: DataTypes.DATE,
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+  },
 });

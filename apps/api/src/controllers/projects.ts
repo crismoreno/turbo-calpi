@@ -1,5 +1,5 @@
 import projects from "../repository/projects";
-import { parseStringToBoolean } from "../helpers/index";
+import { parseStringToBoolean, parseStringToNumber } from "../helpers/index";
 
 export default {
   list: (req, res) => {
@@ -8,6 +8,13 @@ export default {
 
     projects.list({ featured, visible }, (projects) => {
       res.send(projects);
+    });
+  },
+  get: (req, res) => {
+    const id = parseStringToNumber(req.params.id);
+
+    projects.get({ id }, (project) => {
+      res.send(project);
     });
   },
 };

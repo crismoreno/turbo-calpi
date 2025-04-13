@@ -1,4 +1,5 @@
-export const parseStringToBoolean = (string) => {
+import { FindOptions } from "@sequelize/core";
+export const parseStringToBoolean = (string: string | undefined) => {
   if (typeof string === "string") {
     return string === "true";
   }
@@ -6,16 +7,31 @@ export const parseStringToBoolean = (string) => {
   return string;
 };
 
-export const buildQueryParams = (queryParamsObject) => {
-  const query = {};
-  const keys = Object.keys(queryParamsObject);
-
-  if (keys.length > 0) {
-    keys.map((key) => {
-      const param = queryParamsObject[key];
-      if (param != null) query[key] = queryParamsObject[key];
-    });
-    return query;
+export const parseStringToNumber = (string: string | undefined) => {
+  if (typeof string === "string") {
+    const number = Number(string);
+    if (!isNaN(number)) {
+      return number;
+    }
   }
-  return query;
+  return string;
+};
+
+export const parseBooleanQuery = (
+  baseFindObject: FindOptions,
+  booleanQueries,
+) => {
+  const booleanKeys = Object.keys(booleanQueries);
+
+  for (const key of booleanKeys) {
+    const value = parseStringToBoolean(booleanQueries[key]);
+    if (typeof value === "boolean") {
+      baseFindObject.where = {
+        ...baseFindObject.where,
+        [key]: value,
+      };
+    }
+  }
+
+  return baseFindObject;
 };
